@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: stg_accounts
+    description: >
+      Staged accounts from the Salesforce CRM. Each row is a customer or prospect
+      company. Tier reflects the commercial segment: smb, mid-market, or enterprise.
+      ARR is the account's current annual recurring revenue with Clariva.
+    columns:
+      - name: account_id
+        description: Unique identifier for the account.
+        tests:
+          - unique
+          - not_null
+      - name: account_name
+        description: Legal or trading name of the customer company.
+      - name: industry
+        description: Primary industry vertical of the account (e.g. Financial Services, Healthcare).
+      - name: arr
+        description: >
+          Annual recurring revenue attributed to this account, in USD. Reflects
+          the sum of all active subscription MRR × 12. Updated on subscription change events.
+      - name: tier
+        description: >
+          Commercial segment tier assigned by the sales team: smb (under $30k ARR),
+          mid-market ($30k–$100k ARR), or enterprise (over $100k ARR).
+      - name: created_at
+        description: Timestamp when the account was first created in Salesforce.

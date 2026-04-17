@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: fct_pipeline
+    description: >
+      Open pipeline aggregated by stage and account tier. Used by the sales team
+      to assess pipeline coverage and deal distribution. Pipeline value is calculated
+      by summing stg_opportunities.total_value — the pre-migration single-amount field.
+      After the Salesforce restructuring, total_value no longer captures full deal
+      value for opportunities with multiple order lines. Pipeline totals reported
+      here will be understated until this model is updated to join stg_order_lines.
+    columns:
+      - name: stage
+        description: Salesforce pipeline stage (e.g. Proposal, Negotiation, Prospecting).
+        tests:
+          - not_null
+      - name: tier
+        description: Commercial segment tier of the accounts in this grouping (smb, mid-market, enterprise).
+      - name: opportunity_count
+        description: Number of open opportunities in this stage/tier combination.
+      - name: pipeline_value
+        description: >
+          Total value of open opportunities in this stage/tier group, summed from
+          stg_opportunities.total_value. Subject to the cardinality-change assumption:
+          if opportunities now represent collections of order lines, this sum
+          undercounts pipeline value for any multi-line opportunity.
+      - name: avg_deal_size
+        description: >
+          Average deal size within this stage/tier group, derived from total_value.
+          Carries the same post-migration inaccuracy as pipeline_value.

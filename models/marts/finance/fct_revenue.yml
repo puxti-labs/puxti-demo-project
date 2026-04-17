@@ -1,0 +1,49 @@
+version: 2
+
+models:
+  - name: fct_revenue
+    description: >
+      Closed-won revenue by opportunity, enriched with account attributes and
+      time dimensions for monthly and quarterly reporting. This model assumes one
+      amount per opportunity — it reads total_value directly from stg_opportunities
+      and never joins to order lines. If the opportunity entity is restructured to
+      contain multiple order lines per deal, this model will silently undercount
+      or misreport revenue depending on how total_value is populated upstream.
+    columns:
+      - name: opportunity_id
+        description: Unique identifier for the closed-won opportunity.
+        tests:
+          - unique
+          - not_null
+      - name: opportunity_name
+        description: Human-readable name of the won deal.
+      - name: close_date
+        description: Date the deal was marked Closed Won in Salesforce.
+      - name: total_value
+        description: >
+          Sum of opportunity amounts across all closed-won deals. Assumes one
+          amount per opportunity. This assumption breaks if the opportunity entity
+          is restructured to order lines — the correct approach post-migration is
+          to sum stg_order_lines.total_price grouped by opportunity_id.
+      - name: account_id
+        description: Foreign key to the account that owns this opportunity.
+      - name: account_name
+        description: Name of the customer account.
+      - name: industry
+        description: Industry vertical of the customer account.
+      - name: tier
+        description: Commercial segment tier of the account (smb, mid-market, enterprise).
+      - name: close_month
+        description: First day of the calendar month in which the deal closed.
+      - name: close_quarter
+        description: First day of the fiscal quarter in which the deal closed.
+      - name: close_year
+        description: Calendar year in which the deal closed.
+      - name: monthly_revenue
+        description: >
+          Running sum of total_value for all closed-won deals within the same
+          calendar month. Subject to the same single-amount assumption as total_value.
+      - name: quarterly_revenue
+        description: >
+          Running sum of total_value for all closed-won deals within the same
+          calendar quarter. Subject to the same single-amount assumption as total_value.

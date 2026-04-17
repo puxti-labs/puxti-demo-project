@@ -1,0 +1,33 @@
+name: 'clariva'
+version: '1.0.0'
+config-version: 2
+
+profile: 'clariva'
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+analysis-paths: ["analyses"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  clariva:
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table
+      finance:
+        +materialized: table
+      sales:
+        +materialized: table
+      customer:
+        +materialized: table
+
+seeds:
+  clariva:
+    +schema: raw

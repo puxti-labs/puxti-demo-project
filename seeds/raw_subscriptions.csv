@@ -1,0 +1,16 @@
+subscription_id,account_id,plan,mrr,start_date,end_date,status
+sub_001,acc_001,enterprise,10000,2023-10-01,2024-09-30,active
+sub_002,acc_002,starter,1000,2023-09-01,2024-08-31,active
+sub_003,acc_003,enterprise,6250,2023-11-01,2024-10-31,active
+sub_004,acc_004,enterprise,10000,2023-12-01,2024-11-30,active
+sub_005,acc_005,smb,792,2024-04-01,2025-03-31,active
+sub_006,acc_006,mid-market,2667,2024-01-01,2024-12-31,active
+sub_007,acc_007,enterprise,15000,2024-02-01,2025-01-31,active
+sub_008,acc_008,starter,708,2024-03-01,2025-02-28,active
+sub_009,acc_009,enterprise,7333,2024-03-01,2025-02-28,active
+sub_010,acc_010,mid-market,2333,2024-04-01,2025-03-31,active
+sub_011,acc_001,enterprise,10000,2022-10-01,2023-09-30,churned
+sub_012,acc_002,starter,500,2022-07-01,2023-08-31,churned
+sub_013,acc_003,mid-market,4167,2022-09-01,2023-10-31,churned
+sub_014,acc_007,enterprise,12000,2021-07-01,2024-01-31,churned
+sub_015,acc_010,smb,1083,2023-01-01,2024-03-31,churned

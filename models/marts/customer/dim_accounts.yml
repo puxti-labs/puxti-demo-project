@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: dim_accounts
+    description: >
+      Account dimension table joining CRM account attributes with live subscription
+      metrics. This model is unaffected by the Salesforce opportunity restructuring —
+      it references only stg_accounts and stg_subscriptions, neither of which changes
+      in the migration. Puxti correctly identifies this model as out of scope when
+      propagating the cardinality change.
+    columns:
+      - name: account_id
+        description: Unique identifier for the account.
+        tests:
+          - unique
+          - not_null
+      - name: account_name
+        description: Legal or trading name of the customer company.
+      - name: industry
+        description: Primary industry vertical of the account.
+      - name: tier
+        description: Commercial segment tier assigned by the sales team (smb, mid-market, enterprise).
+      - name: crm_arr
+        description: >
+          Annual recurring revenue as recorded in Salesforce CRM. May lag behind
+          billing_arr if the CRM has not been updated after a subscription change.
+      - name: active_mrr
+        description: Sum of monthly recurring revenue across all currently active subscriptions.
+      - name: billing_arr
+        description: >
+          Annual recurring revenue derived from the billing system (active_mrr × 12).
+          This is the authoritative ARR figure for financial reporting.
+      - name: active_subscription_count
+        description: Number of currently active subscription contracts for this account.
+      - name: current_plan
+        description: The plan tier of the most recently started active subscription.
+      - name: latest_subscription_start
+        description: Start date of the most recent subscription, active or churned.
+      - name: is_customer
+        description: True if the account has at least one active subscription.
+      - name: created_at
+        description: Timestamp when the account was first created in Salesforce.

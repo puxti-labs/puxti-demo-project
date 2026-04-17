@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: fct_win_rate
+    description: >
+      Win rate by quarter and account tier, calculated from closed opportunities.
+      This model counts opportunity records rather than summing amounts, making
+      it less directly affected by the cardinality change than fct_revenue or
+      fct_pipeline. If the Salesforce migration produces duplicate opportunity
+      rows, opportunity counts could be inflated — but this is a secondary
+      concern compared to the revenue models.
+    columns:
+      - name: close_year
+        description: Calendar year in which the opportunities closed.
+      - name: close_quarter
+        description: First day of the quarter in which the opportunities closed.
+      - name: tier
+        description: Account segment tier for this cohort (smb, mid-market, enterprise).
+      - name: opportunity_count
+        description: Total number of closed opportunities (won and lost) in this cohort.
+      - name: won_count
+        description: Number of opportunities marked Closed Won in this cohort.
+      - name: win_rate_pct
+        description: >
+          Percentage of closed opportunities that were won (won_count / opportunity_count × 100).
+          Rounded to one decimal place. Returns null if no closed opportunities exist for the cohort.

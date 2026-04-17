@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: stg_order_lines
+    description: >
+      Staged order lines from Salesforce, representing the post-migration deal structure.
+      After Clariva's Salesforce restructuring, each opportunity is broken into individual
+      product line items. One opportunity now maps to one or more order lines. This is
+      the authoritative source of deal value after the migration — not stg_opportunities.total_value.
+    columns:
+      - name: order_line_id
+        description: Unique identifier for the order line.
+        tests:
+          - unique
+          - not_null
+      - name: opportunity_id
+        description: >
+          Foreign key to the parent opportunity. Multiple order lines share the same
+          opportunity_id — this is the core of the cardinality change.
+        tests:
+          - not_null
+      - name: product_name
+        description: >
+          The name of the product or service sold on this line item (e.g. Platform Core,
+          Analytics Module, Premium Support).
+      - name: quantity
+        description: Number of units sold. Typically 1 for platform licenses; higher for seat-based products.
+      - name: unit_price
+        description: Price per unit in USD.
+      - name: total_price
+        description: >
+          Total price for this line item (quantity × unit_price). Summing total_price
+          across all order lines for an opportunity gives the true deal value.
+      - name: created_at
+        description: Timestamp when the order line was created in Salesforce.

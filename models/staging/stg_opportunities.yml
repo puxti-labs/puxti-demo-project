@@ -1,0 +1,41 @@
+version: 2
+
+models:
+  - name: stg_opportunities
+    description: >
+      Staged opportunities from the Salesforce CRM. Each row represents a sales
+      opportunity tracked through Clariva's pipeline. Prior to the Salesforce
+      restructuring, each opportunity had a single amount field representing the
+      total deal value. After the migration, opportunities contain multiple order
+      lines — making total_value an unreliable measure of full deal worth.
+    columns:
+      - name: opportunity_id
+        description: Unique identifier for the opportunity, sourced from Salesforce.
+        tests:
+          - unique
+          - not_null
+      - name: account_id
+        description: Foreign key to the account that owns this opportunity.
+        tests:
+          - not_null
+      - name: opportunity_name
+        description: Human-readable name of the opportunity, typically account + product description.
+      - name: stage
+        description: >
+          Current pipeline stage. Values include Closed Won, Closed Lost, Proposal,
+          Negotiation, and Prospecting.
+      - name: total_value
+        description: >
+          The total monetary value of the opportunity. Prior to the Salesforce
+          migration this represented a single deal amount. After migration,
+          opportunities contain multiple order lines — this field no longer captures
+          full deal value accurately. Downstream models that sum this field will
+          produce incorrect revenue figures if opportunities now have multiple rows.
+      - name: close_date
+        description: The actual or expected close date of the opportunity.
+      - name: created_at
+        description: Timestamp when the opportunity was created in Salesforce.
+      - name: is_won
+        description: True if the opportunity stage is Closed Won.
+      - name: is_closed
+        description: True if the opportunity is in any closed stage (won or lost).

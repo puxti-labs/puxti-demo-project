@@ -1,0 +1,21 @@
+opportunity_id,account_id,name,stage,amount,close_date,created_at
+opp_001,acc_001,Meridian Analytics — Platform Expansion,Closed Won,48000,2023-09-30,2023-07-01
+opp_002,acc_002,Vortex Logistics — Starter Package,Closed Won,12000,2023-08-15,2023-06-10
+opp_003,acc_003,Helix Health — Enterprise Upgrade,Closed Won,75000,2023-10-31,2023-08-01
+opp_004,acc_004,Stratos Manufacturing — Full Suite,Closed Won,120000,2023-11-15,2023-09-05
+opp_005,acc_005,Pinnacle Retail — SMB Bundle,Closed Lost,9800,2023-09-01,2023-07-15
+opp_006,acc_006,Nexum Legal — Compliance Module,Closed Won,32000,2023-12-01,2023-10-01
+opp_007,acc_007,Ironbridge Capital — Premium Tier,Closed Won,180000,2024-01-31,2023-11-01
+opp_008,acc_008,Clearwater EdTech — Pilot,Closed Won,8500,2024-02-28,2024-01-10
+opp_009,acc_009,Aevum Insurance — Analytics Add-on,Proposal,55000,2024-04-30,2024-02-15
+opp_010,acc_010,Orion Consulting — Professional Plan,Closed Won,28000,2024-03-15,2024-01-20
+opp_011,acc_001,Meridian Analytics — Security Module,Proposal,22000,2024-05-31,2024-03-01
+opp_012,acc_003,Helix Health — Seats Expansion,Closed Won,18000,2024-02-15,2024-01-05
+opp_013,acc_004,Stratos Manufacturing — Support Renewal,Closed Won,45000,2024-03-31,2024-02-01
+opp_014,acc_007,Ironbridge Capital — Data Connectors,Negotiation,60000,2024-06-30,2024-03-10
+opp_015,acc_002,Vortex Logistics — Growth Package,Closed Won,24000,2024-01-31,2023-11-15
+opp_016,acc_006,Nexum Legal — Seats Add-on,Closed Lost,14000,2024-02-01,2023-12-10
+opp_017,acc_009,Aevum Insurance — Platform License,Closed Won,88000,2024-03-01,2023-12-20
+opp_018,acc_010,Orion Consulting — API Access,Proposal,11000,2024-05-15,2024-03-25
+opp_019,acc_005,Pinnacle Retail — Renewal,Closed Won,19000,2024-03-31,2024-02-10
+opp_020,acc_008,Clearwater EdTech — Team Plan,Proposal,16500,2024-06-01,2024-04-01

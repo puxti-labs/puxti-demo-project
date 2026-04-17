@@ -1,0 +1,11 @@
+account_id,name,industry,arr,tier,created_at
+acc_001,Meridian Analytics,Financial Services,120000,enterprise,2022-03-15
+acc_002,Vortex Logistics,Logistics,28000,smb,2022-07-01
+acc_003,Helix Health,Healthcare,85000,mid-market,2022-08-20
+acc_004,Stratos Manufacturing,Manufacturing,210000,enterprise,2021-11-10
+acc_005,Pinnacle Retail,Retail,19000,smb,2023-01-05
+acc_006,Nexum Legal,Legal Services,46000,mid-market,2022-05-18
+acc_007,Ironbridge Capital,Financial Services,340000,enterprise,2021-06-30
+acc_008,Clearwater EdTech,Education,14000,smb,2023-04-12
+acc_009,Aevum Insurance,Insurance,95000,mid-market,2022-09-01
+acc_010,Orion Consulting,Professional Services,62000,mid-market,2022-12-20

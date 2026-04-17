@@ -1,0 +1,7 @@
+clariva:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: 'clariva.duckdb'
+      threads: 4

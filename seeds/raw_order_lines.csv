@@ -1,0 +1,41 @@
+order_line_id,opportunity_id,product_name,quantity,unit_price,total_price,created_at
+ol_001,opp_001,Platform Core,1,30000,30000,2023-09-30
+ol_002,opp_001,Analytics Module,1,12000,12000,2023-09-30
+ol_003,opp_001,Priority Support,1,6000,6000,2023-09-30
+ol_004,opp_002,Starter Plan,1,12000,12000,2023-08-15
+ol_005,opp_003,Enterprise License,1,50000,50000,2023-10-31
+ol_006,opp_003,SSO & Security Pack,1,15000,15000,2023-10-31
+ol_007,opp_003,Dedicated CSM,1,10000,10000,2023-10-31
+ol_008,opp_004,Full Suite License,1,80000,80000,2023-11-15
+ol_009,opp_004,Onboarding Services,1,20000,20000,2023-11-15
+ol_010,opp_004,Premium Support,1,20000,20000,2023-11-15
+ol_011,opp_005,SMB Bundle,1,9800,9800,2023-09-01
+ol_012,opp_006,Compliance Module,1,20000,20000,2023-12-01
+ol_013,opp_006,Audit Trail Add-on,1,8000,8000,2023-12-01
+ol_014,opp_006,Implementation Services,1,4000,4000,2023-12-01
+ol_015,opp_007,Premium Tier License,1,120000,120000,2024-01-31
+ol_016,opp_007,Data Residency Pack,1,30000,30000,2024-01-31
+ol_017,opp_007,Executive Support,1,30000,30000,2024-01-31
+ol_018,opp_008,Pilot License,1,8500,8500,2024-02-28
+ol_019,opp_009,Analytics Platform,1,40000,40000,2024-04-30
+ol_020,opp_009,Insurance Data Connector,1,15000,15000,2024-04-30
+ol_021,opp_010,Professional Plan,1,28000,28000,2024-03-15
+ol_022,opp_011,Security Module,1,22000,22000,2024-05-31
+ol_023,opp_012,Seats Expansion — 20 seats,20,900,18000,2024-02-15
+ol_024,opp_013,Support Renewal — Standard,1,25000,25000,2024-03-31
+ol_025,opp_013,Support Renewal — Extended Hours,1,20000,20000,2024-03-31
+ol_026,opp_014,Data Connector — Salesforce,1,20000,20000,2024-06-30
+ol_027,opp_014,Data Connector — Snowflake,1,20000,20000,2024-06-30
+ol_028,opp_014,Data Connector — BigQuery,1,20000,20000,2024-06-30
+ol_029,opp_015,Growth Package — Core,1,16000,16000,2024-01-31
+ol_030,opp_015,Growth Package — Reporting,1,8000,8000,2024-01-31
+ol_031,opp_016,Seats Add-on — 10 seats,10,1400,14000,2024-02-01
+ol_032,opp_017,Platform License,1,60000,60000,2024-03-01
+ol_033,opp_017,Regulatory Reporting Module,1,18000,18000,2024-03-01
+ol_034,opp_017,Premium Support,1,10000,10000,2024-03-01
+ol_035,opp_018,API Access — Standard,1,11000,11000,2024-05-15
+ol_036,opp_019,Renewal — Base Plan,1,14000,14000,2024-03-31
+ol_037,opp_019,Renewal — Reporting Add-on,1,5000,5000,2024-03-31
+ol_038,opp_020,Team Plan — 15 seats,15,1000,15000,2024-06-01
+ol_039,opp_020,LMS Integration,1,1500,1500,2024-06-01
+ol_040,opp_009,Dedicated Implementation,1,0,0,2024-04-30
