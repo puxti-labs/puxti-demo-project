@@ -23,13 +23,13 @@ double-count because each opportunity has multiple rows.
 
 **Step 1 — Scan the project**
 ```
-puxti scan --repo .
+puxti scan --dbt-project-dir .
 ```
 Puxti maps the semantic graph: models, columns, relationships, and business definitions.
 
 **Step 2 — Capture the change**
 ```
-puxti capture --entity opportunity --before "Single amount field per opportunity" --after "Multiple order lines per opportunity — cardinality change" --description "Salesforce restructured opportunities to order line items" --repo .
+puxti capture --entity opportunity --before "Single amount field per opportunity" --after "Multiple order lines per opportunity — cardinality change" --description "Salesforce restructured opportunities to order line items" --dbt-project-dir . --repo puxti-labs/puxti-demo-project
 ```
 Puxti captures what the change means, not just what changed structurally.
 
