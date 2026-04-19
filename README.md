@@ -29,8 +29,9 @@ Puxti maps the semantic graph: models, columns, relationships, and business defi
 
 **Step 2 — Capture the change**
 ```
-puxti capture --entity opportunity --before "Single amount field per opportunity" --after "Multiple order lines per opportunity — cardinality change" --description "Salesforce restructured opportunities to order line items" --dbt-project-dir . --repo puxti-labs/puxti-demo-project
+puxti capture --entity opportunity --before "Single amount field per opportunity" --after "Multiple order lines per opportunity — cardinality change" --description "Salesforce restructured opportunities to order line items" --dbt-project-dir .
 ```
+(`--repo` is optional when set in `.puxti.yml` — see Workspace config below)
 Puxti captures what the change means, not just what changed structurally.
 
 **Step 3 — Review the impact**
@@ -59,6 +60,28 @@ dbt seed
 dbt run
 dbt test
 ```
+
+## Workspace config (`.puxti.yml`)
+
+If you're running both this dbt project and the companion [airflow-demo-project](https://github.com/puxti-labs/airflow-demo-project) together, place a `.puxti.yml` one level above both clones:
+
+```yaml
+version: 1
+
+connectors:
+  dbt:
+    project_dir: ./puxti-demo-project
+    repo: puxti-labs/puxti-demo-project
+    base_branch: main
+
+  airflow:
+    project_dir: ./airflow-demo-project
+    repo: puxti-labs/airflow-demo-project
+    dags_dir: dags/
+    base_branch: main
+```
+
+With this in place, `--repo` and `--dbt-project-dir` resolve automatically from any subdirectory.
 
 ## Try it on your own project
 
