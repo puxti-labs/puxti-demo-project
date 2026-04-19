@@ -1,0 +1,4 @@
+.env
+clariva.duckdb
+logs/
+target/
