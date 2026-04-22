@@ -27,22 +27,34 @@ puxti scan --dbt-project-dir .
 ```
 Puxti maps the semantic graph: models, columns, relationships, and business definitions.
 
+**Step 1b — Link upstream Airflow tasks (if using the companion airflow-demo-project)**
+```
+puxti link --from task.airflow.salesforce_sync.extract_opportunities --to source.clariva.raw_opportunities --description "Extracts Salesforce opportunities. amount is a roll-up of OpportunityLineItem.TotalPrice post Q1 2024 migration."
+```
+Creates a cross-system FEEDS edge so puxti can trace changes from the Airflow task all the way through to dbt marts.
+
 **Step 2 — Capture the change**
 ```
-puxti capture --entity opportunity --before "Single amount field per opportunity" --after "Multiple order lines per opportunity — cardinality change" --description "Salesforce restructured opportunities to order line items" --dbt-project-dir .
+puxti capture --entity source.clariva.raw_opportunities.amount --before "Manually entered deal value" --after "Salesforce roll-up: SUM(OpportunityLineItem.TotalPrice)" --description "Q1 2024 migration to line-item pricing changed how Amount is populated"
 ```
 (`--repo` is optional when set in `.puxti.yml` — see Workspace config below)
+
 Puxti captures what the change means, not just what changed structurally.
 
 **Step 3 — Review the impact**
 
-Puxti identifies `fct_revenue` and `fct_pipeline` as broken. `dim_accounts` is
-unaffected — Puxti shows this explicitly so reviewers aren't chasing false positives.
+Puxti identifies `stg_opportunities`, `fct_revenue`, and `fct_pipeline` as affected downstream,
+and `task.airflow.salesforce_sync.extract_opportunities` as the upstream producer. `dim_accounts`
+is unaffected — Puxti shows this explicitly so reviewers aren't chasing false positives.
 
-**Step 4 — Review the generated PR**
+**Step 4 — Review the generated PRs**
 
-Puxti opens a PR with suggested model updates and updated yml descriptions flagging
-the assumption change. Nothing is applied without your review.
+When `.puxti.yml` includes `connectors.airflow`, Puxti opens two coordinated PRs:
+- **dbt PR** (`puxti-labs/puxti-demo-project`) — SQL diffs for affected models
+- **Airflow PR** (`puxti-labs/airflow-demo-project`) — docstring annotation on `extract_opportunities`
+
+Each PR references the other with a suggested merge order (Airflow annotation first, then dbt).
+Nothing is applied without your review.
 
 ## Requirements
 
