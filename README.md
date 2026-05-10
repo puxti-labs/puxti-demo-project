@@ -25,8 +25,7 @@ double-count because each opportunity has multiple rows.
 
 ## Requirements
 
-- Python 3.12+
-- Docker (for Neo4j — until the SQLite port lands)
+- Python 3.12 or 3.13 (dbt-duckdb does not support Python 3.14 yet)
 - dbt Core: `pip install dbt-duckdb`
 - `ANTHROPIC_API_KEY` — [get one at console.anthropic.com](https://console.anthropic.com)
 - `GITHUB_TOKEN` — personal access token with `repo` scope, needed only if you want Puxti to open real PRs
@@ -36,20 +35,11 @@ double-count because each opportunity has multiple rows.
 **1. Install Puxti and dbt**
 
 ```bash
-pip install puxti==0.6.0
+pip install puxti==0.7.0
 pip install dbt-duckdb
 ```
 
-**2. Start Neo4j**
-
-```bash
-docker compose up -d
-```
-
-Neo4j browser will be available at `http://localhost:7474`. The Bolt endpoint at
-`bolt://localhost:7687` is what Puxti connects to.
-
-**3. Set environment variables**
+**2. Set environment variables**
 
 ```bash
 export ANTHROPIC_API_KEY=sk-ant-...
@@ -58,7 +48,7 @@ export GITHUB_TOKEN=ghp_...           # needed only for --repo / PR creation
 
 Or copy `.env.example` to `.env` and fill in the values — Puxti reads it automatically.
 
-**4. Run the dbt project**
+**3. Run the dbt project**
 
 ```bash
 cp profiles.yml.example ~/.dbt/profiles.yml
@@ -67,11 +57,11 @@ dbt run
 dbt test
 ```
 
-**5. Verify Puxti is configured**
+**4. Verify Puxti is configured**
 
 ```bash
 puxti config    # shows resolved env vars and .puxti.yml location
-puxti health    # checks Neo4j, Anthropic key, dbt manifest, GitHub token
+puxti health    # checks Knowledge Graph, Anthropic key, dbt manifest, GitHub token
 ```
 
 ---
